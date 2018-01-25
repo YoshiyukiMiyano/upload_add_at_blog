@@ -224,3 +224,24 @@ Viewの作成
   rails db:create
   rails g model blogs title:string content:text
   rails g controller blogs new
+  
+  
+  
+  heroku
+  git add -A
+  git commit -m "init"
+  heroku create
+  git push heroku master
+  heroku run rake db:migrate
+  
+  だめなとき
+  rm -rf .git
+　git init
+　rake assets:precompile RAILS_ENV=production
+　を実施してから上記
+　
+　
+　テーブル構成を確認する
+　DB名column_names
+　例)
+　User.column_names

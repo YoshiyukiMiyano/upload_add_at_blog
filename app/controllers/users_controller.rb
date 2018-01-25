@@ -15,10 +15,6 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
         @favorites_blogs = @user.favorites
-#        @fav_blogs = Favorite.where("user_id = ?", @user)
-#        @blogs = Blog.all
-
-
     end
 
   private

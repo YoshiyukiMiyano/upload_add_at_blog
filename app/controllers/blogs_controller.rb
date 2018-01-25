@@ -18,7 +18,9 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id #現在ログインしているuserのidをblogのuser_idカラムに挿入する。
+    @semail = User.find(@blog.user_id).email
     if @blog.save
+      ContactMailer.contact_mail(current_user.email).deliver
       redirect_to blogs_path, notice: "ブログを作成しました！"
     else
       render 'new'
