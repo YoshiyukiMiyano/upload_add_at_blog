@@ -24,5 +24,13 @@
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
 
+  <div2 class="row">
+  <%= f.label :profile_image %>
+    <span class="col-xs-5 col-md-5"></span>
+    <span class="col-xs-6 col-md-6">
+    <%= f.file_field :profile_image %>
+    <%= f.hidden_field :image_cache %>
+    </span>
+  </div2><br>
   <%= f.submit "Create my account" %>
 <% end %>

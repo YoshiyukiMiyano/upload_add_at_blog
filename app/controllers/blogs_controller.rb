@@ -19,6 +19,7 @@ class BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
     @blog.user_id = current_user.id #現在ログインしているuserのidをblogのuser_idカラムに挿入する。
     @semail = User.find(@blog.user_id).email
+#    @blog.image.retrieve_from_cache! params[:cache][:image]
     if @blog.save
       ContactMailer.contact_mail(current_user.email).deliver
       redirect_to blogs_path, notice: "ブログを作成しました！"
@@ -52,11 +53,12 @@ class BlogsController < ApplicationController
   def confirm
     @blog = Blog.new(blog_params)
     render :new if @blog.invalid?
+    @blog.image.cache!
   end
 
   private
   def blog_params
-    params.require(:blog).permit(:title, :content)
+    params.require(:blog).permit(:title, :content, :image)
   end
   
   # idをキーとして値を取得するメソッド

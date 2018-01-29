@@ -19,5 +19,15 @@
     <%= form.label :content %>
     <%= form.text_field :content %>
   </div>
+  
+  <div2 class="row">
+    <%= form.label :image %>
+    <span class="col-xs-5 col-md-5"></span>
+    <span class="col-xs-6 col-md-6">
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+    </span>
+  </div2><br>
+
   <%= form.submit %>
 <% end %>
